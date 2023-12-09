@@ -43,6 +43,19 @@
 
     combos {
         compatible = "zmk,combos";
+                // workaround for dead pin
+        combo_semi {
+            timeout-ms = <30>;
+            key-positions = <0 10>;
+            bindings = <&kp SEMI>;
+            layers = <BASE>;
+        };
+        combo_plus {
+            timeout-ms = <30>;
+            key-positions = <0 10>;
+            bindings = <&kp PLUS>;
+            layers = <SYM>;
+        };
 				// both right thumb keys
         combo_accent {
             timeout-ms = <300>;
