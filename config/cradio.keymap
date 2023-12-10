@@ -38,17 +38,31 @@
 };
 
 / {
-		macros {
-				// sometimes my device thinks a modifier is being held down
-				// pressing all modifiers fixes it.
-				unstick: unstick {
-					label = "ZM_unstick";
-					compatible = "zmk,behavior-macro";
-					#binding-cells = <0>;
-					bindings
-						= <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
-				};
-		};
+    macros {
+        // sometimes my device thinks a modifier is being held down
+        // pressing all modifiers fixes it.
+        unstick: unstick {
+            label = "ZM_unstick";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+        };
+        arrow: arrow {
+            label = "ZM_arrow";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp MINUS &kp GT>;
+        };
+        fat_arrow: fat_arrow {
+            label = "ZM_fat_arrow";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp EQUAL &kp GT>;
+        };
+    };
 
     combos {
         compatible = "zmk,combos";
@@ -85,6 +99,15 @@
         };
     };
 
+    behaviors {
+        pv_arrow: arrow_mod_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&arrow>, <&fat_arrow>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     keymap {
             compatible = "zmk,keymap";
 
@@ -103,7 +126,7 @@
 		bindings = <
 		&kp ESC &kp LBKT &kp LPAR &kp LBRC &kp TILDE		&kp CARET &kp RBRC &kp RPAR &kp RBKT &kp GRAVE
 		&kp MINUS &kp STAR &kp EQUAL &kp UNDER &kp DLLR     &kp HASH &sk RCTRL &sk LALT &sk RGUI &sk RSHIFT
-		&kp PLUS &kp PIPE &kp AT &kp SLASH &kp PRCNT 	    &none &kp NUBS &kp AMPS &kp QMARK &kp EXCL
+		&kp PLUS &kp PIPE &kp AT &kp SLASH &kp PRCNT 	    &pv_arrow &kp NUBS &kp AMPS &kp QMARK &kp EXCL
 					                        &mo FNC  &mo SYM2       &trans &trans
 		>;
 		};
