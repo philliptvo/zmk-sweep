@@ -13,8 +13,8 @@
     #define BASE 0
     #define SYM 1
     #define EXT 2
-    #define FNC 3
-    #define SYM2 4
+    #define NUM 3
+    #define FNC 4
     #define ACCENT 5
 		#define SETTINGS 6
 // -----------------
@@ -86,10 +86,10 @@
             bindings = <&mo ACCENT>;
         };
                 // internal-left & external-right thumb keys
-        combo_sym2 {
+        combo_function {
                 timeout-ms = <200>;
                 key-positions = <31 33>;
-                bindings = <&mo SYM2>;
+                bindings = <&mo FNC>;
         };
                 // both left thumb keys
         combo_settings {
@@ -127,7 +127,7 @@
 		&kp ESC &kp LBKT &kp LPAR &kp LBRC &kp TILDE		&kp CARET &kp RBRC &kp RPAR &kp RBKT &kp GRAVE
 		&kp MINUS &kp STAR &kp EQUAL &kp UNDER &kp DLLR     &kp HASH &sk RCTRL &sk LALT &sk RGUI &sk RSHIFT
 		&kp PLUS &kp PIPE &kp AT &kp SLASH &kp PRCNT 	    &pv_arrow &kp NUBS &kp AMPS &kp QMARK &kp EXCL
-					                        &mo FNC  &mo SYM2       &trans &trans
+					                        &mo NUM  &mo FNC       &trans &trans
 		>;
 		};
 
@@ -137,27 +137,27 @@
 		&kp ESC  &trans &trans  &kp TAB  &trans     			    &kp PG_UP   &kp HOME        &kp UP          &kp END     &kp DEL
 		&sk LSHIFT  &sk LGUI  &sk LALT &sk LCTRL  &kp RALT 			&kp PG_DN   &kp LEFT        &kp DOWN        &kp RIGHT   &kp BSPC
 		&kp LC(Z)  &kp LC(X) &kp LC(C) &kp LC(V)  &trans            &caps_word  &kp LC(BSPC)    &kp LS(LG(ENTER))  &kp LG(ENTER)  &kp ENTER
-					                        &trans &kp LCTRL    &trans  &mo FNC
+					                        &trans &kp LCTRL    &trans  &mo NUM
 		>;
 		};
 
-        // Function keys with numbers
+        // Numbers
+       		num_layer {
+		bindings = <
+        &kp N7 &kp N5 &kp N3 &kp N1 &kp N9	                &kp N0 &kp N2 &kp N4 &kp N6 &kp N8
+		&sk LSHIFT &sk LGUI &sk LALT &sk LCTRL &none        &none &sk RCTRL &sk LALT &sk RGUI &sk RSHIFT
+		&none &none &none &none &none		                &none &none &none &none &none
+          				           	&none &none        	&none &none 
+		>;
+		};
+
+        // Function keys
        		fnc_layer {
 		bindings = <
 		&kp F7 &kp F5 &kp F3 &kp F1 &kp F9                  &kp F10 &kp F2 &kp F4 &kp F6 &kp F8 
 		&sk LSHIFT &sk LGUI &sk LALT &sk LCTRL &kp F11      &kp F12 &sk RCTRL &sk LALT &sk RGUI &sk RSHIFT
 		&none &none &none &none &none                       &none &kp PRINTSCREEN &none &none &none 
           				           &none &none              &none &none  
-		>;
-		};
-
-        // Low frequency symbols.
-       		symbols_2_layer {
-		bindings = <
-        &kp N7 &kp N5 &kp N3 &kp N1 &kp N9	                &kp N0 &kp N2 &kp N4 &kp N6 &kp N8
-		&sk LSHIFT &sk LGUI &sk LALT &sk LCTRL &none        &none &sk RCTRL &sk LALT &sk RGUI &sk RSHIFT
-		&none &none &none &none &none		                &none &none &none &none &none
-          				           	&none &none        	&none &none 
 		>;
 		};
 
